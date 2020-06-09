@@ -28,19 +28,18 @@ public class Extractor {
         List<Product> productList = new ArrayList<Product>();
         Document doc = Jsoup.connect("http://devtools.truecommerce.net:8080/challenge001/").get();
         LOG.info(doc.title());
-        Elements newsHeadlines = doc.select("div.productList").select("p").select("a[href]");
-        for (Element headline : newsHeadlines) {
-            LOG.info("\n" + headline.absUrl("href"));
+        Elements links = doc.select("div.productList").select("p").select("a[href]");
+        for (Element elementHeader : links) {
+            LOG.info("\n" + elementHeader.absUrl("href"));
             Product product = new Product();
             productList.add(product);
-
-
-
-
-
-
-
-
+            Document productDocument = Jsoup.connect(elementHeader.absUrl("href")).get();
+            LOG.info(productDocument.title());
+            LOG.info(productDocument.select("p.productDescription1").text());
+            LOG.info(productDocument.select("span.productUnitPrice").text());
+            LOG.info(productDocument.select("span.productWeightPerKg").text());
+            LOG.info(productDocument.select("span.productItemCode").text());
+            LOG.info(productDocument.select("span.productDescription2").text() + productDocument.select("span.productDescription3").text());
         }
 
         return productList;
