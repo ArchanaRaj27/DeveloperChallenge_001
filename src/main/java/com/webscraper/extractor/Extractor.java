@@ -31,9 +31,13 @@ public class Extractor {
         Elements links = doc.select("div.productList").select("p").select("a[href]");
         for (Element elementHeader : links) {
             LOG.info("\n" + elementHeader.absUrl("href"));
-            Product product = new Product();
-            productList.add(product);
             Document productDocument = Jsoup.connect(elementHeader.absUrl("href")).get();
+            Product product = new Product(productDocument.select("span.productItemCode").text(),
+                    productDocument.select("p.productDescription1").text(),
+                    productDocument.select("span.productDescription2").text() + productDocument.select("span.productDescription3").text(),
+                    productDocument.select("span.productUnitPrice").text(),
+                    productDocument.select("span.productWeightPerKg").text());
+            productList.add(product);
             LOG.info(productDocument.title());
             LOG.info(productDocument.select("p.productDescription1").text());
             LOG.info(productDocument.select("span.productUnitPrice").text());
@@ -44,4 +48,9 @@ public class Extractor {
 
         return productList;
     }
+
+    public Document scrap(String url) throws IOException{
+        return Jsoup.connect(url).get();
+    }
+
 }
