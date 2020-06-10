@@ -7,6 +7,18 @@ public class Product {
     private String unitPrice;
     private String kcalPer100g;
 
+    public Product(String itemCode, String name, String description, String unitPrice, String kcalPer100g) {
+        this.itemCode = itemCode;
+        this.name = name;
+        this.description = description;
+        this.unitPrice = unitPrice;
+        this.kcalPer100g = kcalPer100g;
+    }
+
+    public Product() {
+
+    }
+
 
     public String getItemCode() {
         return itemCode;

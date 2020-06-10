@@ -4,8 +4,11 @@
  */
 package com.webscraper;
 import java.io.IOException;
+import java.util.List;
 
 import com.webscraper.extractor.Extractor;
+import com.webscraper.model.Product;
+import com.webscraper.util.JsonEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,19 +18,19 @@ public class App {
 
 
         /**
-         *
-         */
-        public App() {
-
-        }
-
-        /**
          * @param args
          */
         public static void main(String[] args) {
             try{
                 Extractor extractor = new Extractor();
-                extractor.scrap();
+                List<Product> products = extractor.scrap();
+
+                JsonEngine jsonEngine = new JsonEngine();
+                String output = jsonEngine.convertJson(products);
+
+                LOG.info(output);
+
+
             } catch (IOException e) {
                 LOG.error(e.getMessage());
 
