@@ -1,15 +1,27 @@
+/**
+ * @author Archana
+ */
 package com.webscraper.model;
 
+/**
+ * Product class
+ * @attr title
+ * @attr code
+ * @attr description
+ * @attr unitPrice
+ * @attr kcalPer100g
+ */
 public class Product {
-    private String itemCode;
-    private String name;
+    private String title;
+    private String code;
     private String description;
     private String unitPrice;
     private String kcalPer100g;
 
-    public Product(String itemCode, String name, String description, String unitPrice, String kcalPer100g) {
-        this.itemCode = itemCode;
-        this.name = name;
+    // Product constructor
+    public Product(String title, String code, String description, String unitPrice, String kcalPer100g) {
+        this.title = code;
+        this.code = title;
         this.description = description;
         this.unitPrice = unitPrice;
         this.kcalPer100g = kcalPer100g;
@@ -19,21 +31,21 @@ public class Product {
 
     }
 
-
-    public String getItemCode() {
-        return itemCode;
+    // Product getters and setters
+    public String getTitle() {
+        return title;
     }
 
-    public void setItemCode(String itemCode) {
-        this.itemCode = itemCode;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getDescription() {
@@ -63,11 +75,13 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "itemCode='" + itemCode + '\'' +
-                ", name='" + name + '\'' +
+                "title='" + title + '\'' +
+                ", code='" + code + '\'' +
                 ", description='" + description + '\'' +
                 ", unitPrice='" + unitPrice + '\'' +
                 ", kcalPer100g='" + kcalPer100g + '\'' +
                 '}';
     }
+
+
 }
