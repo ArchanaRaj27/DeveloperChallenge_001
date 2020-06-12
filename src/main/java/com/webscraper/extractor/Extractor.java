@@ -25,19 +25,19 @@ public class Extractor {
      * return List<Product>
      * Scrap the whole data from URL using JSOUP implementation
      */
-    public List<Product> scrap() throws IOException {
+    public List<Product> scrape() throws IOException {
         List<Product> productList = new ArrayList<Product>();
         Document doc = Jsoup.connect("http://devtools.truecommerce.net:8080/challenge001/").get();
         LOG.info(doc.title());
         Elements links = doc.select("div.productList").select("p").select("a[href]");
         for (Element elementHeader : links) {
             // Scraping the data into a list of products
-            doInnerScrap(productList, elementHeader);
+            doInnerScrape(productList, elementHeader);
         }
         return productList;
     }
 
-    public void doInnerScrap(List<Product> productList, Element elementHeader) throws IOException {
+    public void doInnerScrape(List<Product> productList, Element elementHeader) throws IOException {
         LOG.info("\n" + elementHeader.absUrl("href"));
         Document productDocument = Jsoup.connect(elementHeader.absUrl("href")).get();
         Product product = new Product(productDocument.select("span.productItemCode").text(),

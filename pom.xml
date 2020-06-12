@@ -14,7 +14,7 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.13.1</version>
 		</dependency>
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
+		<!-- LOGGING DEPENDENCIES - slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>

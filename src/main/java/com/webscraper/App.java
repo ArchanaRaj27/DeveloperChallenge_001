@@ -22,7 +22,7 @@ public class App {
         public static void main(String[] args) throws IOException {
             // Extract the data into a list of products
             Extractor extractor = new Extractor();
-            List<Product> products = extractor.scrap();
+            List<Product> products = extractor.scrape();
             Response response = new Response();
             response.setResults(products);
             Calculation cal = new Calculation();
