@@ -1,7 +1,7 @@
 /**
  * @author Archana
  */
-package com.webscraper;
+package com.webscraper.controller;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,6 +25,7 @@ public class App {
             List<Product> products = extractor.scrape();
             Response response = new Response();
             response.setResults(products);
+            // Do calculations for total object
             Calculation cal = new Calculation();
             response.setTotal(cal.doCalculate(products));
 
