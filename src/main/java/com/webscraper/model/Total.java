@@ -1,17 +1,18 @@
 package com.webscraper.model;
 
+
 public class Total {
 
     // Total -
-    // Net - Total of all the items
+    // Net - Total of all the items (Sum of the items)
     // Vat - VAT on the gross amount (all items subjected to 20% VAT)
     // Gross - Total of goods including VAT
 
-    private double net = 0;
-    private double vat = 0;
-    private double gross = 0;
+    private String net = null;
+    private String vat = null;
+    private String gross = null;
 
-    public Total(double net, double vat, double gross) {
+    public Total(String net, String vat, String gross) {
         this.net = net;
         this.vat = vat;
         this.gross = gross;
@@ -21,30 +22,24 @@ public class Total {
 
     }
 
-    public double getNet() {
+    public String getNet() {
         return net;
     }
 
-    public void setNet(double net) {
-        this.net = net;
-    }
+    public void setNet(String net) { this.net = net; }
 
-    public double getVat() {
+    public String getVat() {
         return vat;
     }
 
-    public void setVat(double vat) {
+    public void setVat(String vat) {
         this.vat = vat;
     }
 
-    public double getGross() {
+    public String getGross() {
         return gross;
     }
 
-    public void setGross(double gross) {
-        this.gross = gross;
-    }
-
-
+    public void setGross(String gross) { this.gross = gross; }
 
 }

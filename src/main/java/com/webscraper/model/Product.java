@@ -3,6 +3,9 @@
  */
 package com.webscraper.model;
 
+
+import java.text.DecimalFormat;
+
 /**
  * Product class
  * @attr title
@@ -15,15 +18,17 @@ public class Product {
     private String title;
     private String code;
     private String description;
-    private String unitPrice;
+    private Double unitPrice;
     private String kcalPer100g;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     // Product constructor
     public Product(String title, String code, String description, String unitPrice, String kcalPer100g) {
         this.title = code;
         this.code = title;
         this.description = description;
-        this.unitPrice = unitPrice;
+        this.unitPrice = new Double(unitPrice);
         this.kcalPer100g = kcalPer100g;
     }
 
@@ -56,11 +61,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(String unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
