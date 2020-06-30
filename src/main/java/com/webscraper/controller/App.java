@@ -25,10 +25,10 @@ public class App {
             List<Product> products = extractor.scrape();
             Response response = new Response();
             response.setResults(products);
+
             // Do calculations for total object
             Calculation cal = new Calculation();
             response.setTotal(cal.doCalculate(products));
-
 
             // Convert the List of products (Java objects) to Json string
             JsonEngine jsonEngine = new JsonEngine();

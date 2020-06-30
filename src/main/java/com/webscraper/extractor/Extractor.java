@@ -37,14 +37,15 @@ public class Extractor {
         return productList;
     }
 
-    public void doInnerScrape(List<Product> productList, Element elementHeader) throws IOException {
+    public void doInnerScrape(List<Product> productList, Element elementHeader) throws IOException,NumberFormatException{
         LOG.info("\n" + elementHeader.absUrl("href"));
         Document productDocument = Jsoup.connect(elementHeader.absUrl("href")).get();
+        // Place the extracted values into the Product constructor
         Product product = new Product(productDocument.select("span.productItemCode").text(),
                 productDocument.select("p.productDescription1").text(),
-                productDocument.select("span.productDescription2").text() + productDocument.select("span.productDescription3").text(),
+                productDocument.select("span.productWeightPerKg").text(),
                 productDocument.select("span.productUnitPrice").text(),
-                productDocument.select("span.productWeightPerKg").text());
+                productDocument.select("span.productDescription2").text());
         productList.add(product);
         // Call the logging functionality
         DataLogger dataLogger = new DataLogger();

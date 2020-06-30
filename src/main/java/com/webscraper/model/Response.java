@@ -1,9 +1,9 @@
 package com.webscraper.model;
 
+
 import java.util.List;
 
 public class Response {
-
     private List<Product> results;
     private Total total;
 
