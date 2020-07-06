@@ -3,6 +3,7 @@ package com.webscraper.util;
 import com.webscraper.model.Product;
 import com.webscraper.model.Total;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -17,16 +18,16 @@ public class Calculation {
         double netLocal = 0;
         for (int i = 0; i < products.size(); i++ ){
             netLocal += products.get(i).getUnitPrice();
-            total.setNet(decimalFormat.format(netLocal));
+            total.setNet(new Double(decimalFormat.format(netLocal)));
         }
         // Calculation of VAT value
         double vatLocal = 0;
         vatLocal = netLocal * 0.2;
-        total.setVat(decimalFormat.format(vatLocal));
+        total.setVat(new Double(decimalFormat.format(vatLocal)));
         // Calculation of Gross value
         double grossLocal = 0;
         grossLocal = netLocal + vatLocal;
-        total.setGross(decimalFormat.format(grossLocal));
+        total.setGross(new Double(decimalFormat.format(grossLocal)));
 
         return total;
     }

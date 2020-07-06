@@ -8,11 +8,11 @@ public class Total {
     // Vat - VAT on the gross amount (all items subjected to 20% VAT)
     // Gross - Total of goods including VAT
 
-    private String net = null;
-    private String vat = null;
-    private String gross = null;
+    private Double net = null;
+    private Double vat = null;
+    private Double gross = null;
 
-    public Total(String net, String vat, String gross) {
+    public Total(Double net, Double vat, Double gross) {
         this.net = net;
         this.vat = vat;
         this.gross = gross;
@@ -22,24 +22,24 @@ public class Total {
 
     }
 
-    public String getNet() {
+    public Double getNet() {
         return net;
     }
 
-    public void setNet(String net) { this.net = net; }
+    public void setNet(Double net) { this.net = net; }
 
-    public String getVat() {
+    public Double getVat() {
         return vat;
     }
 
-    public void setVat(String vat) {
+    public void setVat(Double vat) {
         this.vat = vat;
     }
 
-    public String getGross() {
+    public Double getGross() {
         return gross;
     }
 
-    public void setGross(String gross) { this.gross = gross; }
+    public void setGross(Double gross) { this.gross = gross; }
 
 }
