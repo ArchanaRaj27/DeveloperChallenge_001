@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 public class Extractor {
     private static final Logger LOG = LoggerFactory.getLogger(Extractor.class);
+    public static String URL = "http://devtools.truecommerce.net:8080/challenge001/";
 
     /**
      * @throws IOException
@@ -27,7 +28,7 @@ public class Extractor {
      */
     public List<Product> scrape() throws IOException {
         List<Product> productList = new ArrayList<Product>();
-        Document doc = Jsoup.connect("http://devtools.truecommerce.net:8080/challenge001/").get();
+        Document doc = Jsoup.connect(URL).get();
         LOG.info(doc.title());
         Elements links = doc.select("div.productList").select("p").select("a[href]");
         for (Element elementHeader : links) {
