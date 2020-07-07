@@ -24,7 +24,7 @@ public class Extractor {
     /**
      * @throws IOException
      * return List<Product>
-     * Scrap the whole data from URL using JSOUP implementation
+     * Scrape the whole data from URL using JSOUP implementation
      */
     public List<Product> scrape() throws IOException {
         List<Product> productList = new ArrayList<Product>();

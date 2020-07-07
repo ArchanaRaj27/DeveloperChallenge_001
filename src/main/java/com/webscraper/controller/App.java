@@ -26,11 +26,11 @@ public class App {
             Response response = new Response();
             response.setResults(products);
 
-            // Do calculations for total object
+            // Do calculations for total object - Net/Gross/VAT
             Calculation cal = new Calculation();
             response.setTotal(cal.doCalculate(products));
 
-            // Convert the List of products (Java objects) to Json string
+            // Convert the List of products (Java objects) to JSON string
             JsonEngine jsonEngine = new JsonEngine();
             String output = jsonEngine.convertJson(response);
 
