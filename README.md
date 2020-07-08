@@ -9,7 +9,10 @@
 Packages:
 --------
 controller - Contains main process
+
 extracter - Contains the scrape functionality
+
 model - Contains getters and setters of Products, Total and Response (combination of Results and Total)
+
 util - Contains the method to calculate Net/Gross/VAT and the Json converter. 
 
