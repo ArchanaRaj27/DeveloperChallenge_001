@@ -2,9 +2,8 @@
  * @author Archana
  */
 package com.webscraper.model;
-
-
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 
 import java.text.DecimalFormat;
 
@@ -16,6 +15,7 @@ import java.text.DecimalFormat;
  * @attr unitPrice
  * @attr kcalPer100g
  */
+@Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Product {
     private String title;
@@ -46,58 +46,4 @@ public class Product {
     public Product() {
 
     }
-
-    // Product getters and setters
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(Double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public Double getKcalPer100g() {
-        return kcalPer100g;
-    }
-
-    public void setKcalPer100g(Double kcalPer100g) {
-        this.kcalPer100g = kcalPer100g;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "title='" + title + '\'' +
-                ", code='" + code + '\'' +
-                ", description='" + description + '\'' +
-                ", unitPrice='" + unitPrice + '\'' +
-                ", kcalPer100g='" + kcalPer100g + '\'' +
-                '}';
-    }
-
-
 }

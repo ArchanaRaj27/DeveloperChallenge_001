@@ -1,6 +1,7 @@
 package com.webscraper.model;
 
-
+@lombok.Setter
+@lombok.Getter
 public class Total {
 
     // Total -
@@ -21,25 +22,5 @@ public class Total {
     public Total() {
 
     }
-
-    public Double getNet() {
-        return net;
-    }
-
-    public void setNet(Double net) { this.net = net; }
-
-    public Double getVat() {
-        return vat;
-    }
-
-    public void setVat(Double vat) {
-        this.vat = vat;
-    }
-
-    public Double getGross() {
-        return gross;
-    }
-
-    public void setGross(Double gross) { this.gross = gross; }
 
 }
