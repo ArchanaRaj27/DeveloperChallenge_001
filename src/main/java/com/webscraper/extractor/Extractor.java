@@ -1,6 +1,5 @@
 /**
  * @author Archana
- *
  */
 
 package com.webscraper.extractor;
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.webscraper.model.Product;
+import com.webscraper.util.DataLogger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,38 +19,37 @@ import org.slf4j.LoggerFactory;
 
 public class Extractor {
     private static final Logger LOG = LoggerFactory.getLogger(Extractor.class);
+    public static String URL = "http://devtools.truecommerce.net:8080/challenge001/";
 
     /**
      * @throws IOException
-     *
+     * return List<Product>
+     * Scrape the whole data from URL using JSOUP implementation
      */
-    public List<Product> scrap() throws IOException {
+    public List<Product> scrape() throws IOException {
         List<Product> productList = new ArrayList<Product>();
-        Document doc = Jsoup.connect("http://devtools.truecommerce.net:8080/challenge001/").get();
+        Document doc = Jsoup.connect(URL).get();
         LOG.info(doc.title());
         Elements links = doc.select("div.productList").select("p").select("a[href]");
         for (Element elementHeader : links) {
-            LOG.info("\n" + elementHeader.absUrl("href"));
-            Document productDocument = Jsoup.connect(elementHeader.absUrl("href")).get();
-            Product product = new Product(productDocument.select("span.productItemCode").text(),
-                    productDocument.select("p.productDescription1").text(),
-                    productDocument.select("span.productDescription2").text() + productDocument.select("span.productDescription3").text(),
-                    productDocument.select("span.productUnitPrice").text(),
-                    productDocument.select("span.productWeightPerKg").text());
-            productList.add(product);
-            LOG.info(productDocument.title());
-            LOG.info(productDocument.select("p.productDescription1").text());
-            LOG.info(productDocument.select("span.productUnitPrice").text());
-            LOG.info(productDocument.select("span.productWeightPerKg").text());
-            LOG.info(productDocument.select("span.productItemCode").text());
-            LOG.info(productDocument.select("span.productDescription2").text() + productDocument.select("span.productDescription3").text());
+            // Scraping the data into a list of products
+            doInnerScrape(productList, elementHeader);
         }
-
         return productList;
     }
 
-    public Document scrap(String url) throws IOException{
-        return Jsoup.connect(url).get();
+    public void doInnerScrape(List<Product> productList, Element elementHeader) throws IOException,NumberFormatException{
+        LOG.info("\n" + elementHeader.absUrl("href"));
+        Document productDocument = Jsoup.connect(elementHeader.absUrl("href")).get();
+        // Place the extracted values into the Product constructor
+        Product product = new Product(productDocument.select("span.productItemCode").text(),
+                productDocument.select("p.productDescription1").text(),
+                productDocument.select("span.productWeightPerKg").text(),
+                productDocument.select("span.productUnitPrice").text(),
+                productDocument.select("span.productDescription2").text());
+        productList.add(product);
+        // Call the logging functionality
+        DataLogger dataLogger = new DataLogger();
+        dataLogger.doLog(productDocument);
     }
-
 }

@@ -1,73 +1,49 @@
+/**
+ * @author Archana
+ */
 package com.webscraper.model;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
 
+import java.text.DecimalFormat;
+
+/**
+ * Product class
+ * @attr title
+ * @attr code
+ * @attr description
+ * @attr unitPrice
+ * @attr kcalPer100g
+ */
+@Data
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Product {
-    private String itemCode;
-    private String name;
+    private String title;
+    private String code;
+    private Double kcalPer100g;
+    private Double unitPrice;
     private String description;
-    private String unitPrice;
-    private String kcalPer100g;
 
-    public Product(String itemCode, String name, String description, String unitPrice, String kcalPer100g) {
-        this.itemCode = itemCode;
-        this.name = name;
+    // Product constructor
+    public Product(String title, String code, String kcalPer100g, String unitPrice, String description) {
+        this.title = code;
+        this.code = title;
+        if (kcalPer100g.length() > 0) {
+            this.kcalPer100g = new Double(kcalPer100g);
+        }
+        else{
+            this.kcalPer100g = null;
+        }
+        if (unitPrice.length() > 0) {
+            this.unitPrice = new Double(unitPrice);
+        }
+        else{
+            this.unitPrice = null;
+        }
         this.description = description;
-        this.unitPrice = unitPrice;
-        this.kcalPer100g = kcalPer100g;
     }
 
     public Product() {
 
-    }
-
-
-    public String getItemCode() {
-        return itemCode;
-    }
-
-    public void setItemCode(String itemCode) {
-        this.itemCode = itemCode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(String unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public String getKcalPer100g() {
-        return kcalPer100g;
-    }
-
-    public void setKcalPer100g(String kcalPer100g) {
-        this.kcalPer100g = kcalPer100g;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "itemCode='" + itemCode + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", unitPrice='" + unitPrice + '\'' +
-                ", kcalPer100g='" + kcalPer100g + '\'' +
-                '}';
     }
 }
