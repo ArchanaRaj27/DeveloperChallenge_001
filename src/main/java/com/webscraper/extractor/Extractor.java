@@ -30,7 +30,8 @@ public class Extractor {
         List<Product> productList = new ArrayList<Product>();
         Document doc = Jsoup.connect(URL).get();
         LOG.info(doc.title());
-        Elements links = doc.select("div.productList").select("p").select("a[href]");
+        //Elements links = doc.select("div.productList").select("p").select("a[href]");
+        Elements links = doc.select("div.productList").select("p").select("a.productLink");
         for (Element elementHeader : links) {
             // Scraping the data into a list of products
             doInnerScrape(productList, elementHeader);
