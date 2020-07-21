@@ -3,6 +3,7 @@
  */
 package com.webscraper.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.text.DecimalFormat;
@@ -18,10 +19,15 @@ import java.text.DecimalFormat;
 @Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Product {
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("code")
     private String code;
+    @JsonProperty("kcal_per_100g")
     private Double kcalPer100g;
+    @JsonProperty("unit_price")
     private Double unitPrice;
+    @JsonProperty("description")
     private String description;
 
     // Product constructor

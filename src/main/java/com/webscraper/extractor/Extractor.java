@@ -30,7 +30,8 @@ public class Extractor {
         List<Product> productList = new ArrayList<Product>();
         Document doc = Jsoup.connect(URL).get();
         LOG.info(doc.title());
-        Elements links = doc.select("div.productList").select("p").select("a[href]");
+        //Elements links = doc.select("div.productList").select("p").select("a[href]");
+        Elements links = doc.select("div.productList").select("p").select("a.productLink");
         for (Element elementHeader : links) {
             // Scraping the data into a list of products
             doInnerScrape(productList, elementHeader);
@@ -44,7 +45,7 @@ public class Extractor {
         // Place the extracted values into the Product constructor
         Product product = new Product(productDocument.select("span.productItemCode").text(),
                 productDocument.select("p.productDescription1").text(),
-                productDocument.select("span.productWeightPerKg").text(),
+                productDocument.select("span.productKcalPer100Grams").text(),
                 productDocument.select("span.productUnitPrice").text(),
                 productDocument.select("span.productDescription2").text());
         productList.add(product);
